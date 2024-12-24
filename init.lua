@@ -85,12 +85,44 @@ lsp.vtsls.setup(coq.lsp_ensure_capabilities())
 require("mason-lspconfig").setup {
   ensure_installed = { "lua_ls", "rust_analyzer" },
 }
-
+require("telescope").setup {
+  pickers = {
+    help_tags = {
+      mappings = {},
+    },
+  },
+}
 local builtin = require "telescope.builtin"
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+
+--Telescope buffer drop
+-- require("telescope").setup {
+--   pickers = {
+--     buffers = {
+--       mappings = {
+--         i = { ["<CR>"] = actions.select_tab_drop },
+--       },
+--       find_files = {
+--         mappings = {
+--           i = { ["<CR>"] = actions.select_tab_drop },
+--         },
+--       },
+--       git_files = {
+--         mappings = {
+--           i = { ["<CR>"] = actions.select_tab_drop },
+--         },
+--       },
+--       old_files = {
+--         mappings = {
+--           i = { ["<CR>"] = actions.select_tab_drop },
+--         },
+--       },
+--     },
+--   },
+-- }
 
 local harpoon = require "harpoon"
 
@@ -225,3 +257,9 @@ require("lualine").setup {
   extensions = {},
   inactive_winbar = {},
 }
+
+-- Spaces
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting

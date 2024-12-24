@@ -1,4 +1,4 @@
--- Bootstrap lazy.nvim
+--pumvisible Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -36,14 +36,7 @@ require("lazy").setup {
 
 require("telescope").setup {
   defaults = {
-    mappings = {
-      i = {
-        ["<Enter>"] = "file_tab",
-      },
-      n = {
-        ["<Enter>"] = "file_vsplit",
-      },
-    },
+    mappings = {},
   },
   pickers = {
     find_files = {
