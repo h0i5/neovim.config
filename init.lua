@@ -54,6 +54,26 @@ end
 
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
+-- themery
+-- Minimal config
+require("themery").setup {
+  themes = {
+    "NeoSolarized",
+    "catppuccin",
+    "catppuccin-frappe",
+    "catppuccin-mocha",
+    "tokyonight",
+    "tokyonight-storm",
+    "tokyonight-night",
+    "tokyonight-moon",
+    "elford",
+    "habamax",
+    "solarized",
+    "retrobox",
+  }, -- Your list of installed colorschemes.
+  livePreview = true, -- Apply theme while picking. Default to true.
+}
+
 -- pass to setup along with your other options
 require("nvim-tree").setup {
   ---
@@ -86,12 +106,9 @@ require("mason-lspconfig").setup {
   ensure_installed = { "lua_ls", "rust_analyzer" },
 }
 require("telescope").setup {
-  pickers = {
-    help_tags = {
-      mappings = {},
-    },
-  },
+  defaults = {},
 }
+
 local builtin = require "telescope.builtin"
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
@@ -209,7 +226,7 @@ NeoSolarized.setup {
 -- Set colorscheme to NeoSolarized
 vim.cmd [[
    try
-	colorscheme NeoSolarized
+	colorscheme tokyonight 
 	set background=dark
     endtry
 ]]
@@ -263,3 +280,6 @@ vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+
+-- neckpain
+--
